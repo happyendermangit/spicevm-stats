@@ -4,6 +4,7 @@ from datetime import datetime
 
 webhook = os.getenv('WEBHOOK_URL') 
 
+print(webhook)
 date = datetime.now()
 date = int(round(date.timestamp()))
 
