@@ -1,0 +1,43 @@
+name: Scan spicevm stats
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
+      issues: write
+      statuses: write
+      deployments: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          pip install requests
+      - name: Run script
+        run: |
+          python ./scan.py
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+      - name: set email
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: commit
+        run: |
+            git add ./stats.json
+            git commit -am "✅ Stats updated" 
+            git push
+      
