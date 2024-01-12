@@ -30,7 +30,7 @@ try:
     else:
         if r.status_code != 502:
             json = {
-                "content": f"<@&1194736295533084723> <t:{date}>",
+                "content": f"<t:{date}>",
                 "embeds": [
                     {
                     "title": "<:cross_:1194738825184935986> Spicevm is broken!",
@@ -45,7 +45,7 @@ try:
                 f.write('{"online":true,"responded":true,"broken":true,"statusCode":'+str(r.status_code)+',"lastChecked":'+str(date)+"}")
         else:
             json = {
-                "content": f"<@&1194736295533084723> <t:{date}>",
+                "content": f"<t:{date}>",
                 "embeds": [
                     {
                     "title": "<:cross_:1194738825184935986> Spicevm is down!",
@@ -60,7 +60,7 @@ try:
                 f.write('{"online":false,"responded":false,"lastChecked":'+str(date)+"}")
 except:
     json = {
-            "content": f"<@&1194736295533084723> <t:{date}>",
+            "content": f"<t:{date}>",
         "embeds": [
             {
             "title": "<:cross_:1194738825184935986> Spicevm is down!",
