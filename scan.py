@@ -28,21 +28,36 @@ try:
             f.write('{"online":true,"responded":true,"broken":false,"statusCode":'+str(r.status_code)+',"lastChecked":'+str(date)+"}")
 
     else:
-        json = {
-            "content": f"<@&1194736295533084723> <t:{date}>",
-            "embeds": [
-                {
-                "title": "<:cross_:1194738825184935986> Spicevm is broken!",
-                "description": f"Spicevm website responded with **``{r.status_code}``** as status code!",
-                "color": 16711680
-                }
-            ],
-            "attachments": []
-        }
-        rq = requests.post(webhook,headers={"content-type":"application/json"},json=json)
-        with open('stats.json','w') as f:
-            f.write('{"online":true,"responded":true,"broken":true,"statusCode":'+str(r.status_code)+',"lastChecked":'+str(date)+"}")
-
+        if r.status_code != 502:
+            json = {
+                "content": f"<@&1194736295533084723> <t:{date}>",
+                "embeds": [
+                    {
+                    "title": "<:cross_:1194738825184935986> Spicevm is broken!",
+                    "description": f"Spicevm website responded with **``{r.status_code}``** as status code!",
+                    "color": 16711680
+                    }
+                ],
+                "attachments": []
+            }
+            rq = requests.post(webhook,headers={"content-type":"application/json"},json=json)
+            with open('stats.json','w') as f:
+                f.write('{"online":true,"responded":true,"broken":true,"statusCode":'+str(r.status_code)+',"lastChecked":'+str(date)+"}")
+        else:
+            json = {
+                "content": f"<@&1194736295533084723> <t:{date}>",
+                "embeds": [
+                    {
+                    "title": "<:cross_:1194738825184935986> Spicevm is down!",
+                    "description": "Spicevm website didn't respond!",
+                    "color": 16711680
+                    }
+                ],
+                "attachments": []
+            }
+            rq = requests.post(webhook,headers={"content-type":"application/json"},json=json)
+            with open('stats.json','w') as f:
+                f.write('{"online":false,"responded":false,"lastChecked":'+str(date)+"}")
 except:
     json = {
             "content": f"<@&1194736295533084723> <t:{date}>",
