@@ -2,7 +2,7 @@ import requests,os
 from datetime import datetime
 
 
-webhook = "https://discord.com/api/webhooks/1194732762217840720/OnCPpRKHR79PBZW3pby9QL3Xkyw4PGdJgZfGtykCtB_eycqyonl5USkoeAcV3ji__3vf"
+webhook = os.getenv('WEBHOOK')
 
 print(webhook)
 date = datetime.now()
