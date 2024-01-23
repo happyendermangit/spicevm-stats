@@ -29,7 +29,7 @@ jobs:
         run: |
           python ./scan.py
         env:
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          WEBHOOK: ${{ secrets.WEBHOOK }}
       - name: set email
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
