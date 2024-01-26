@@ -12,8 +12,12 @@ date = int(round(date.timestamp()))
 try: 
     r = requests.get('https://svmnetwork.serveo.net/')
     if r.status_code == 200:
+        ping = ""
+        re = requests.get('https://raw.githubusercontent.com/happyendermangit/spicevm-stats/main/stats.json').json()
+        if not re.get('online'):
+            ping = "<@&1194736295533084723> " 
         json = {
-            "content": f"<@&1194736295533084723> <t:{date}>",
+            "content": f"{ping}<t:{date}>",
             "embeds": [
                 {
                 "title": "<:check:1194738889500397679> Spicevm is up!",
