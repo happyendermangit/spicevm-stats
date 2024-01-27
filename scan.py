@@ -21,7 +21,7 @@ try:
             "embeds": [
                 {
                 "title": "<:check:1194738889500397679> Spicevm is up!",
-                "url":"https://github.com/happyendermangit/spicevm-stats",    
+                "url":"https://svmnetwork.serveo.net/",    
                 "description": "Spicevm website responded with **``200``** as status code!",
                 "color": 65309
                 }
@@ -39,7 +39,7 @@ try:
                 "embeds": [
                     {
                     "title": "<:cross_:1194738825184935986> Spicevm is broken!",
-                    "url":"https://github.com/happyendermangit/spicevm-stats",    
+                    "url":"https://svmnetwork.serveo.net/",    
                     "description": f"Spicevm website responded with **``{r.status_code}``** as status code!",
                     "color": 16711680
                     }
@@ -55,7 +55,7 @@ try:
                 "embeds": [
                     {
                     "title": "<:cross_:1194738825184935986> Spicevm is down!",
-                    "url":"https://github.com/happyendermangit/spicevm-stats",    
+                    "url":"https://svmnetwork.serveo.net/",    
                     "description": "Spicevm website didn't respond!",
                     "color": 16711680
                     }
